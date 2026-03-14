@@ -1,0 +1,27 @@
+{
+  "doc_key": "budget_line",
+  "doc_title": "Budget Line",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "budget_planning_control",
+  "submodule_id": "budget_cycles",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "budget_planning_control",
+    "submodule": "budget_cycles",
+    "reference_doc_id": "budget_line",
+    "evidence_gaps": [
+      "category taxonomy",
+      "multi-dimensional budget structure"
+    ]
+  }
+}

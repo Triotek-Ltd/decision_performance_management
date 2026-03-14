@@ -1,0 +1,27 @@
+{
+  "doc_key": "performance_exception",
+  "doc_title": "Performance Exception",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "performance_measurement",
+  "submodule_id": "scorecards",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "performance_measurement",
+    "submodule": "scorecards",
+    "reference_doc_id": "performance_exception",
+    "evidence_gaps": [
+      "escalation logic",
+      "correction-verification rules"
+    ]
+  }
+}

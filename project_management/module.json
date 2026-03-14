@@ -1,0 +1,8 @@
+{
+  "id": "project_management",
+  "title": "Project Management",
+  "app_id": "decision_performance_management",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

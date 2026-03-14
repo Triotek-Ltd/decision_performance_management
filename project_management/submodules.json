@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "project_delivery",
+    "project_setup"
+  ]
+}

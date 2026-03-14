@@ -1,0 +1,27 @@
+{
+  "doc_key": "project_task",
+  "doc_title": "Project Task",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "project_management",
+  "submodule_id": "project_delivery",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "project_management",
+    "submodule": "project_delivery",
+    "reference_doc_id": "project_task",
+    "evidence_gaps": [
+      "subtask model",
+      "critical-path semantics"
+    ]
+  }
+}

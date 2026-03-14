@@ -1,0 +1,27 @@
+{
+  "doc_key": "executive_review",
+  "doc_title": "Executive Review",
+  "doc_kind": "event",
+  "status": "draft",
+  "module_id": "management_reporting",
+  "submodule_id": "review_cycles",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "event",
+  "classification": {
+    "archetype": "event",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "management_reporting",
+    "submodule": "review_cycles",
+    "reference_doc_id": "executive_review",
+    "evidence_gaps": [
+      "review agenda model",
+      "attendance/decision capture"
+    ]
+  }
+}

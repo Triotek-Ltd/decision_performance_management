@@ -1,0 +1,108 @@
+{
+  "doc_id": "executive_review",
+  "doc_title": "Executive Review",
+  "archetype": "event",
+  "doc_kind": "event",
+  "actions": [
+    "create",
+    "schedule",
+    "complete",
+    "close",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "planned",
+    "states": [
+      "planned",
+      "scheduled",
+      "completed",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ]
+  },
+  "related_doc_count": 2,
+  "fetch_rule_count": 0,
+  "action_handler_count": 5,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "event_schedule",
+      "supports_timing": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": false
+    },
+    "lifecycle_states": [
+      "planned",
+      "scheduled",
+      "completed",
+      "closed",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "start_at": "event_start",
+      "end_at": "event_end",
+      "review_date": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "review_code",
+      "review_date",
+      "topic_scope"
+    ],
+    "list_columns": [
+      "title",
+      "start_at",
+      "end_at",
+      "workflow_state"
+    ],
+    "initial_state": "planned",
+    "lifecycle_states": [
+      "planned",
+      "scheduled",
+      "completed",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "schedule": null,
+      "complete": null,
+      "close": "closed",
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {},
+  "related_docs": [
+    "management_report",
+    "management_action_item"
+  ],
+  "borrowed_fields": [
+    "report identity",
+    "audience from management_report"
+  ]
+}

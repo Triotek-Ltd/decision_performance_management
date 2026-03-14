@@ -1,0 +1,27 @@
+{
+  "doc_key": "variance_report",
+  "doc_title": "Variance Report",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "budget_planning_control",
+  "submodule_id": "variance_control",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "budget_planning_control",
+    "submodule": "variance_control",
+    "reference_doc_id": "variance_report",
+    "evidence_gaps": [
+      "actuals linkage",
+      "variance threshold model"
+    ]
+  }
+}

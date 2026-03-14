@@ -1,0 +1,27 @@
+{
+  "doc_key": "project_record",
+  "doc_title": "Project Record",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "project_management",
+  "submodule_id": "project_setup",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "project_management",
+    "submodule": "project_setup",
+    "reference_doc_id": "project_record",
+    "evidence_gaps": [
+      "project portfolio linkage",
+      "project classification"
+    ]
+  }
+}

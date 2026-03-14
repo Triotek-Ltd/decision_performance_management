@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "kpi_library",
+    "scorecards"
+  ]
+}

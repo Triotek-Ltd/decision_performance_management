@@ -1,0 +1,28 @@
+{
+  "doc_key": "kpi_definition",
+  "doc_title": "Kpi Definition",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "performance_measurement",
+  "submodule_id": "kpi_library",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "performance_measurement",
+    "submodule": "kpi_library",
+    "reference_doc_id": "kpi_definition",
+    "evidence_gaps": [
+      "formula syntax",
+      "threshold rules",
+      "ownership model"
+    ]
+  }
+}

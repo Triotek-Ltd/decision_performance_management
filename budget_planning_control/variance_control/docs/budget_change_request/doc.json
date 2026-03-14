@@ -1,0 +1,27 @@
+{
+  "doc_key": "budget_change_request",
+  "doc_title": "Budget Change Request",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "budget_planning_control",
+  "submodule_id": "variance_control",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "budget_planning_control",
+    "submodule": "variance_control",
+    "reference_doc_id": "budget_change_request",
+    "evidence_gaps": [
+      "approval thresholds",
+      "revision-version rules"
+    ]
+  }
+}

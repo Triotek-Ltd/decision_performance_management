@@ -1,0 +1,9 @@
+{
+  "modules": [
+    "budget_planning_control",
+    "management_reporting",
+    "managerial_decision_making",
+    "performance_measurement",
+    "project_management"
+  ]
+}

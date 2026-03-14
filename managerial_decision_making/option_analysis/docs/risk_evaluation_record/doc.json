@@ -1,0 +1,27 @@
+{
+  "doc_key": "risk_evaluation_record",
+  "doc_title": "Risk Evaluation Record",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "managerial_decision_making",
+  "submodule_id": "option_analysis",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "managerial_decision_making",
+    "submodule": "option_analysis",
+    "reference_doc_id": "risk_evaluation_record",
+    "evidence_gaps": [
+      "scoring rubric",
+      "assumption tracking"
+    ]
+  }
+}

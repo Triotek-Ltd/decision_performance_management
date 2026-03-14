@@ -1,0 +1,27 @@
+{
+  "doc_key": "decision_case",
+  "doc_title": "Decision Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "managerial_decision_making",
+  "submodule_id": "decision_cases",
+  "app_id": "decision_performance_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "decision_performance_management",
+    "module": "managerial_decision_making",
+    "submodule": "decision_cases",
+    "reference_doc_id": "decision_case",
+    "evidence_gaps": [
+      "decision-rights model",
+      "multi-stage review rules"
+    ]
+  }
+}

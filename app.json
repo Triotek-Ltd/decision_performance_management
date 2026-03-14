@@ -1,0 +1,12 @@
+{
+  "id": "decision_performance_management",
+  "title": "My Plug App",
+  "bundle_id": "management",
+  "module_registry": "modules.json",
+  "config_manifest": "config/3plug.app.json",
+  "license": {
+    "id": "CUSTOM-PROPRIETARY",
+    "type": "proprietary_custom",
+    "terms_ref": "LICENSE"
+  }
+}
