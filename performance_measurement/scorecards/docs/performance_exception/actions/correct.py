@@ -8,7 +8,7 @@ ACTION_ID = "correct"
 ACTION_RULE = {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['kpi_definition', 'scorecard_record', 'management_action_item'], 'borrowed_fields': ['threshold', 'metric context from kpi_definition'], 'inferred_roles': ['hr officer']}, 'actors': ['hr officer'], 'action_actors': {'create': ['hr officer'], 'assign': ['hr officer'], 'review': ['hr officer'], 'close': ['hr officer'], 'archive': ['hr officer']}}
 
 def handle_correct(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

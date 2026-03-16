@@ -33,7 +33,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_management_report",
+      "doc_id": "management_report",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_executive_review",
+      "doc_id": "executive_review",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_team_checkin",
+      "doc_id": "team_checkin",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_performance_exception",
+      "doc_id": "performance_exception",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -41,7 +66,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "management_report",
+      "executive_review",
+      "team_checkin",
+      "performance_exception"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -62,6 +92,43 @@
   "runtime_hints": {
     "doc_key": "management_action_item",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "management_report",
+          "executive_review",
+          "team_checkin",
+          "performance_exception"
+        ],
+        "borrowed_field_context": [
+          "source issue or decision context from management_report or executive_review"
+        ],
+        "inferred_roles": [
+          "Reviewer"
+        ]
+      },
+      "actors": [
+        "Reviewer"
+      ],
+      "action_actors": {
+        "create": [
+          "Reviewer"
+        ],
+        "assign": [
+          "Reviewer"
+        ],
+        "track": [
+          "Reviewer"
+        ],
+        "close": [
+          "Reviewer"
+        ],
+        "archive": [
+          "Reviewer"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

@@ -68,7 +68,11 @@
         "task_owner",
         "dependency_note"
       ],
-      "relations": [],
+      "relations": [
+        "related_project_record",
+        "related_project_plan",
+        "related_project_status_report"
+      ],
       "amounts": [],
       "dates": [
         "due_date"
@@ -337,6 +341,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_project_record",
+        "label": "Related Project Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "project_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_project_plan",
+        "label": "Related Project Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "project_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_project_status_report",
+        "label": "Related Project Status Report",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "project_status_report",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -442,16 +518,25 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
-          "review",
+          "create",
           "assign",
           "track",
-          "monitor",
-          "confirm",
+          "block",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "operations coordinator",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "assign",
+          "track",
+          "close",
           "archive"
         ]
       }
@@ -530,7 +615,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_project_record",
+        "doc_id": "project_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_project_plan",
+        "doc_id": "project_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_project_status_report",
+        "doc_id": "project_status_report",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -538,7 +642,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "project_record",
+        "project_plan",
+        "project_status_report"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -562,7 +670,44 @@
     "runtime_hints": {
       "doc_key": "project_task",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "workflow_hints": {
+        "relation_context": {
+          "related_docs": [
+            "project_record",
+            "project_plan",
+            "project_status_report"
+          ],
+          "borrowed_fields": [
+            "project scope",
+            "milestone context from project_plan"
+          ],
+          "inferred_roles": [
+            "operations coordinator"
+          ]
+        },
+        "actors": [
+          "operations coordinator"
+        ],
+        "action_actors": {
+          "create": [
+            "operations coordinator"
+          ],
+          "assign": [
+            "operations coordinator"
+          ],
+          "track": [
+            "operations coordinator"
+          ],
+          "close": [
+            "operations coordinator"
+          ],
+          "archive": [
+            "operations coordinator"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -638,6 +783,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -656,6 +804,43 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/decision_performance_management/project_management/project_delivery/project_task/",
+    "status_field": "workflow_state",
+    "initial_state": "open",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "assign",
+        "source_state": "open",
+        "target_state": "in_progress",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "close",
+        "source_state": "open",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "open",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "project_record",
+      "project_plan",
+      "project_status_report"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -663,7 +848,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

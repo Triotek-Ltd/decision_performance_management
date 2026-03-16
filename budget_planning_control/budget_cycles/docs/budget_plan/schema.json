@@ -359,6 +359,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_budget_line",
+      "label": "Related Budget Line",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "budget_line",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_variance_report",
+      "label": "Related Variance Report",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "variance_report",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_budget_change_request",
+      "label": "Related Budget Change Request",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "budget_change_request",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -383,7 +455,11 @@
       "total_amount_summary",
       "approval_state"
     ],
-    "relations": [],
+    "relations": [
+      "related_budget_line",
+      "related_variance_report",
+      "related_budget_change_request"
+    ],
     "amounts": [
       "currency",
       "total_amount"
@@ -500,16 +576,14 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
+        "create",
+        "submit",
         "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "approve",
+        "activate",
+        "close",
         "archive"
       ]
     }

@@ -63,7 +63,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "approver": "actor_reference"
+      "approver": "actor_reference",
+      "related_budget_plan": "relation_collection",
+      "related_variance_report": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -103,6 +105,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "budget_plan",
     "variance_report"

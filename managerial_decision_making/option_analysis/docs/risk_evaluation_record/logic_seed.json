@@ -59,7 +59,10 @@
       "transaction_date": "transaction_date",
       "party": "primary_party",
       "currency": "currency_code",
-      "total_amount": "total_amount"
+      "total_amount": "total_amount",
+      "related_decision_case": "relation_collection",
+      "related_decision_option": "relation_collection",
+      "related_performance_exception": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -94,7 +97,41 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "decision_case",
+        "decision_option",
+        "performance_exception"
+      ],
+      "borrowed_fields": [
+        "decision",
+        "option context from linked records"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "confirm": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "decision_case",
     "decision_option",

@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_project_record",
+      "doc_id": "project_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_project_plan",
+      "doc_id": "project_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_project_task",
+      "doc_id": "project_task",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "project_record",
+      "project_plan",
+      "project_task"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -60,6 +83,40 @@
   "runtime_hints": {
     "doc_key": "project_status_report",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "project_record",
+          "project_plan",
+          "project_task"
+        ],
+        "borrowed_fields": [
+          "project identity",
+          "owner from project_record"
+        ],
+        "inferred_roles": [
+          "operations coordinator"
+        ]
+      },
+      "actors": [
+        "operations coordinator"
+      ],
+      "action_actors": {
+        "create": [
+          "operations coordinator"
+        ],
+        "review": [
+          "operations coordinator"
+        ],
+        "publish": [
+          "operations coordinator"
+        ],
+        "archive": [
+          "operations coordinator"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

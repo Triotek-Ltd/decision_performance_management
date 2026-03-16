@@ -63,7 +63,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "due_date": "schedule_marker",
-      "task_status": "status_flag"
+      "task_status": "status_flag",
+      "related_project_record": "relation_collection",
+      "related_project_plan": "relation_collection",
+      "related_project_status_report": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -101,7 +104,44 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "project_record",
+        "project_plan",
+        "project_status_report"
+      ],
+      "borrowed_fields": [
+        "project scope",
+        "milestone context from project_plan"
+      ],
+      "inferred_roles": [
+        "operations coordinator"
+      ]
+    },
+    "actors": [
+      "operations coordinator"
+    ],
+    "action_actors": {
+      "create": [
+        "operations coordinator"
+      ],
+      "assign": [
+        "operations coordinator"
+      ],
+      "track": [
+        "operations coordinator"
+      ],
+      "close": [
+        "operations coordinator"
+      ],
+      "archive": [
+        "operations coordinator"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "project_record",
     "project_plan",

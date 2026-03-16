@@ -8,7 +8,7 @@ ACTION_ID = "reject"
 ACTION_RULE = {'allowed_in_states': ['draft', 'reviewed', 'selected', 'rejected'], 'transitions_to': 'rejected'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['decision_case', 'risk_evaluation_record'], 'borrowed_fields': ['decision topic', 'deadline from decision_case'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'review': ['case owner'], 'reject': ['case owner'], 'archive': ['case owner']}}
 
 def handle_reject(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

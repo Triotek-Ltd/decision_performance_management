@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'case_flow', 'supports_assignment': True, 'supports_escalation': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': False}, 'integration_profile': {'external_sync_enabled': False}, 'lifecycle_states': ['raised', 'reviewed', 'correcting', 'escalated', 'closed', 'archived'], 'is_transactional': False}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'owner': 'actor_reference'}, 'search_fields': ['title', 'reference_no', 'description', 'exception_code', 'source_kpi_or_scorecard', 'exception_summary'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'raised', 'lifecycle_states': ['raised', 'reviewed', 'correcting', 'escalated', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'assign': None, 'review': 'reviewed', 'correct': None, 'escalate': 'escalated', 'close': 'closed', 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'owner': 'actor_reference', 'related_kpi_definition': 'relation_collection', 'related_scorecard_record': 'relation_collection', 'related_management_action_item': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'exception_code', 'source_kpi_or_scorecard', 'exception_summary'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'raised', 'lifecycle_states': ['raised', 'reviewed', 'correcting', 'escalated', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'assign': None, 'review': 'reviewed', 'correct': None, 'escalate': 'escalated', 'close': 'closed', 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['kpi_definition', 'scorecard_record', 'management_action_item'], 'borrowed_fields': ['threshold', 'metric context from kpi_definition'], 'inferred_roles': ['hr officer']}, 'actors': ['hr officer'], 'action_actors': {'create': ['hr officer'], 'assign': ['hr officer'], 'review': ['hr officer'], 'close': ['hr officer'], 'archive': ['hr officer']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': [], 'related_docs': ['kpi_definition', 'scorecard_record', 'management_action_item'], 'action_targets': {'create': None, 'assign': None, 'review': 'reviewed', 'correct': None, 'escalate': 'escalated', 'close': 'closed', 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "performance_exception"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

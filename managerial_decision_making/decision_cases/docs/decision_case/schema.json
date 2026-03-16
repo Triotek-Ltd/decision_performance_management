@@ -263,6 +263,54 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_decision_option",
+      "label": "Related Decision Option",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "decision_option",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_risk_evaluation_record",
+      "label": "Related Risk Evaluation Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "risk_evaluation_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -287,7 +335,10 @@
       "case_state",
       "final_decision"
     ],
-    "relations": [],
+    "relations": [
+      "related_decision_option",
+      "related_risk_evaluation_record"
+    ],
     "amounts": [],
     "dates": [],
     "parties": [],
@@ -400,16 +451,28 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
-        "review",
+        "create",
         "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "review",
+        "approve",
+        "reject",
+        "close",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "case owner",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "assign",
+        "review",
+        "approve",
+        "reject",
+        "close",
         "archive"
       ]
     }

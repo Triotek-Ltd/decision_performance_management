@@ -1,7 +1,7 @@
 {
   "docs": [
-    "management_report",
     "executive_review",
-    "management_action_item"
+    "management_action_item",
+    "management_report"
   ]
 }

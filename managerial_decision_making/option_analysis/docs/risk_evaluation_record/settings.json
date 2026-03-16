@@ -30,7 +30,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_decision_case",
+      "doc_id": "decision_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_decision_option",
+      "doc_id": "decision_option",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_performance_exception",
+      "doc_id": "performance_exception",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -38,7 +57,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "decision_case",
+      "decision_option",
+      "performance_exception"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -62,6 +85,40 @@
   "runtime_hints": {
     "doc_key": "risk_evaluation_record",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "decision_case",
+          "decision_option",
+          "performance_exception"
+        ],
+        "borrowed_fields": [
+          "decision",
+          "option context from linked records"
+        ],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "review": [
+          "case owner"
+        ],
+        "confirm": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

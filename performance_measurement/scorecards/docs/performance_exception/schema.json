@@ -263,6 +263,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_kpi_definition",
+      "label": "Related Kpi Definition",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "kpi_definition",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_scorecard_record",
+      "label": "Related Scorecard Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "scorecard_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_management_action_item",
+      "label": "Related Management Action Item",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "management_action_item",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -287,7 +359,11 @@
       "owner",
       "disposition"
     ],
-    "relations": [],
+    "relations": [
+      "related_kpi_definition",
+      "related_scorecard_record",
+      "related_management_action_item"
+    ],
     "amounts": [],
     "dates": [],
     "parties": [],
@@ -400,16 +476,26 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
-        "review",
+        "create",
         "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "review",
+        "correct",
+        "escalate",
+        "close",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "hr officer",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "assign",
+        "review",
+        "close",
         "archive"
       ]
     }

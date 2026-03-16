@@ -65,7 +65,10 @@
       "currency": "currency_code",
       "total_amount": "total_amount",
       "start_date": "schedule_marker",
-      "end_date": "schedule_marker"
+      "end_date": "schedule_marker",
+      "related_project_record": "relation_collection",
+      "related_project_task": "relation_collection",
+      "related_project_status_report": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -104,6 +107,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "project_record",
     "project_task",

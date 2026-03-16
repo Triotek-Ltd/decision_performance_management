@@ -1,8 +1,8 @@
 {
   "docs": [
-    "project_status_report",
-    "project_task",
     "project_plan",
-    "project_record"
+    "project_record",
+    "project_status_report",
+    "project_task"
   ]
 }

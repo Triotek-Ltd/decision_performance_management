@@ -285,6 +285,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_project_record",
+      "label": "Related Project Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "project_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_project_plan",
+      "label": "Related Project Plan",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "project_plan",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_project_task",
+      "label": "Related Project Task",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "project_task",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -309,7 +381,11 @@
       "risk_summary",
       "review_state"
     ],
-    "relations": [],
+    "relations": [
+      "related_project_record",
+      "related_project_plan",
+      "related_project_task"
+    ],
     "amounts": [],
     "dates": [
       "posting_date"
@@ -390,16 +466,22 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
+        "create",
         "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "publish",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "operations coordinator",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "review",
+        "publish",
         "archive"
       ]
     }

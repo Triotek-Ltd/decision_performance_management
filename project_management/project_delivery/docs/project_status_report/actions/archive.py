@@ -8,7 +8,7 @@ ACTION_ID = "archive"
 ACTION_RULE = {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'archived'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['project_record', 'project_plan', 'project_task'], 'borrowed_fields': ['project identity', 'owner from project_record'], 'inferred_roles': ['operations coordinator']}, 'actors': ['operations coordinator'], 'action_actors': {'create': ['operations coordinator'], 'review': ['operations coordinator'], 'publish': ['operations coordinator'], 'archive': ['operations coordinator']}}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

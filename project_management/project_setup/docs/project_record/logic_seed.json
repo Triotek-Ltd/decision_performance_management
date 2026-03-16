@@ -56,7 +56,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_project_plan": "relation_collection",
+      "related_project_task": "relation_collection",
+      "related_project_status_report": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -91,6 +94,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "project_plan",
     "project_task",

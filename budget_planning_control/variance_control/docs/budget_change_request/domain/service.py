@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'case_flow', 'supports_assignment': True, 'supports_escalation': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': False}, 'integration_profile': {'external_sync_enabled': False}, 'lifecycle_states': ['requested', 'in_review', 'approved', 'rejected', 'closed', 'archived'], 'is_transactional': False}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'approver': 'actor_reference'}, 'search_fields': ['title', 'reference_no', 'description', 'request_code', 'source_budget', 'change_reason'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'requested', 'lifecycle_states': ['requested', 'in_review', 'approved', 'rejected', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'submit': 'in_review', 'review': 'in_review', 'approve': 'approved', 'reject': 'rejected', 'close': 'closed', 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'approver': 'actor_reference', 'related_budget_plan': 'relation_collection', 'related_variance_report': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'request_code', 'source_budget', 'change_reason'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'requested', 'lifecycle_states': ['requested', 'in_review', 'approved', 'rejected', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'submit': 'in_review', 'review': 'in_review', 'approve': 'approved', 'reject': 'rejected', 'close': 'closed', 'archive': 'archived'}}
 
 WORKFLOW_HINTS = {}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': [], 'related_docs': ['budget_plan', 'variance_report'], 'action_targets': {'create': None, 'submit': 'in_review', 'review': 'in_review', 'approve': 'approved', 'reject': 'rejected', 'close': 'closed', 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "budget_change_request"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

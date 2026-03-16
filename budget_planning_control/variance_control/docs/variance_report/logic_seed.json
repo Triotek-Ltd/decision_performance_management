@@ -56,7 +56,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "posting_date": "posting_date"
+      "posting_date": "posting_date",
+      "related_budget_plan": "relation_collection",
+      "related_budget_line": "relation_collection",
+      "related_budget_change_request": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -90,6 +93,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "budget_plan",
     "budget_line",

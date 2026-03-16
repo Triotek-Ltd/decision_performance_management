@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': None}, 'review': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': 'reviewed'}, 'correct': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': None}, 'escalate': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': 'escalated'}, 'close': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['raised', 'reviewed', 'correcting', 'escalated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['kpi_definition', 'scorecard_record', 'management_action_item'], 'borrowed_fields': ['threshold', 'metric context from kpi_definition'], 'inferred_roles': ['hr officer']}, 'actors': ['hr officer'], 'action_actors': {'create': ['hr officer'], 'assign': ['hr officer'], 'review': ['hr officer'], 'close': ['hr officer'], 'archive': ['hr officer']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

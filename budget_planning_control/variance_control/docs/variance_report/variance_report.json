@@ -58,7 +58,11 @@
         "risk_note",
         "review_state"
       ],
-      "relations": [],
+      "relations": [
+        "related_budget_plan",
+        "related_budget_line",
+        "related_budget_change_request"
+      ],
       "amounts": [],
       "dates": [
         "posting_date"
@@ -339,6 +343,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_budget_plan",
+        "label": "Related Budget Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "budget_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_budget_line",
+        "label": "Related Budget Line",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "budget_line",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_budget_change_request",
+        "label": "Related Budget Change Request",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "budget_change_request",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -419,16 +495,11 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "publish",
           "archive"
         ]
       }
@@ -507,7 +578,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_budget_plan",
+        "doc_id": "budget_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_budget_line",
+        "doc_id": "budget_line",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_budget_change_request",
+        "doc_id": "budget_change_request",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -515,7 +605,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "budget_plan",
+        "budget_line",
+        "budget_change_request"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -539,7 +633,8 @@
     "runtime_hints": {
       "doc_key": "variance_report",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -615,6 +710,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -631,6 +729,44 @@
       "doc_kind": "ledger"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/decision_performance_management/budget_planning_control/variance_control/variance_report/",
+    "status_field": "workflow_state",
+    "initial_state": "draft",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "review",
+        "source_state": "draft",
+        "target_state": "reviewed",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "publish",
+        "source_state": "draft",
+        "target_state": "published",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "draft",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "budget_plan",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -638,7 +774,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

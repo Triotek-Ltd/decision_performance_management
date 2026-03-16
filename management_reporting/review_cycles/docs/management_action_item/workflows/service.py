@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'assigned', 'in_progress'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'assigned', 'in_progress'], 'transitions_to': 'in_progress'}, 'track': {'allowed_in_states': ['opened', 'assigned', 'in_progress'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'assigned', 'in_progress'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'assigned', 'in_progress'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['management_report', 'executive_review', 'team_checkin', 'performance_exception'], 'borrowed_field_context': ['source issue or decision context from management_report or executive_review'], 'inferred_roles': ['Reviewer']}, 'actors': ['Reviewer'], 'action_actors': {'create': ['Reviewer'], 'assign': ['Reviewer'], 'track': ['Reviewer'], 'close': ['Reviewer'], 'archive': ['Reviewer']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

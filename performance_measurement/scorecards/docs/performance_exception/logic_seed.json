@@ -63,7 +63,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_kpi_definition": "relation_collection",
+      "related_scorecard_record": "relation_collection",
+      "related_management_action_item": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +105,44 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "kpi_definition",
+        "scorecard_record",
+        "management_action_item"
+      ],
+      "borrowed_fields": [
+        "threshold",
+        "metric context from kpi_definition"
+      ],
+      "inferred_roles": [
+        "hr officer"
+      ]
+    },
+    "actors": [
+      "hr officer"
+    ],
+    "action_actors": {
+      "create": [
+        "hr officer"
+      ],
+      "assign": [
+        "hr officer"
+      ],
+      "review": [
+        "hr officer"
+      ],
+      "close": [
+        "hr officer"
+      ],
+      "archive": [
+        "hr officer"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "kpi_definition",
     "scorecard_record",

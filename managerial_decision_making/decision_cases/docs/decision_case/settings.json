@@ -23,7 +23,20 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_decision_option",
+      "doc_id": "decision_option",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_risk_evaluation_record",
+      "doc_id": "risk_evaluation_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -31,7 +44,10 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "decision_option",
+      "risk_evaluation_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -48,6 +64,45 @@
   "runtime_hints": {
     "doc_key": "decision_case",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "decision_option",
+          "risk_evaluation_record"
+        ],
+        "borrowed_fields": [],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "assign": [
+          "case owner"
+        ],
+        "review": [
+          "case owner"
+        ],
+        "approve": [
+          "case owner"
+        ],
+        "reject": [
+          "case owner"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

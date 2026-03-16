@@ -56,7 +56,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "posting_date": "posting_date"
+      "posting_date": "posting_date",
+      "related_project_record": "relation_collection",
+      "related_project_plan": "relation_collection",
+      "related_project_task": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -89,7 +92,41 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "project_record",
+        "project_plan",
+        "project_task"
+      ],
+      "borrowed_fields": [
+        "project identity",
+        "owner from project_record"
+      ],
+      "inferred_roles": [
+        "operations coordinator"
+      ]
+    },
+    "actors": [
+      "operations coordinator"
+    ],
+    "action_actors": {
+      "create": [
+        "operations coordinator"
+      ],
+      "review": [
+        "operations coordinator"
+      ],
+      "publish": [
+        "operations coordinator"
+      ],
+      "archive": [
+        "operations coordinator"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "project_record",
     "project_plan",

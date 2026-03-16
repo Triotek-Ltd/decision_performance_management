@@ -1,8 +1,8 @@
 {
   "docs": [
+    "budget_change_request",
     "budget_line",
     "budget_plan",
-    "budget_change_request",
     "variance_report"
   ]
 }

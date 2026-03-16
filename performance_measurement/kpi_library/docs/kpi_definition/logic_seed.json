@@ -54,7 +54,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_scorecard_record": "relation_collection",
+      "related_performance_exception": "relation_collection",
+      "related_alert_rule": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -89,6 +92,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "scorecard_record",
     "performance_exception",
