@@ -15,6 +15,244 @@
   },
   "doc_key": "variance_report",
   "doc_title": "Variance Report",
+  "ui": {
+    "icon_key": "report",
+    "accent": "#205072",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Variance Report KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "variance_report",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Variance Report summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "variance_report",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Variance Report charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "variance_report",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Variance Report reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "variance_report",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Variance Report records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "variance_report",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "variance_report",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "variance_report",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "variance_report",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "variance_report",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Variance Report Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Variance Report Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Variance Report Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Variance Report Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "variance_report_trend_line",
+        "label": "Variance Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "variance_report_volume_column",
+        "label": "Variance Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "variance_report_distribution_donut",
+        "label": "Variance Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "budget_plan",
+      "budget_line",
+      "budget_change_request",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "budget_plan",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "budget scope",
+      "target amounts from budget_plan"
+    ],
+    "emits_records": [],
+    "downstream_effects": [],
+    "actors": [],
+    "handoff_targets": [
+      "budget_plan",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_change_request",
+        "relation": "references"
+      }
+    ]
+  },
   "allowed_actions": [
     "create",
     "review",
@@ -366,7 +604,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_budget_line",
@@ -390,7 +629,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_budget_change_request",
@@ -414,7 +654,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       }
     ],
     "title_field": "title",
@@ -443,7 +684,12 @@
       "supports_attachments": true,
       "supports_comments": true,
       "supports_activity_log": true,
-      "supports_assignments": true
+      "supports_assignments": true,
+      "is_submittable": false,
+      "supports_submission_snapshot": true,
+      "supports_official_outputs": true,
+      "supports_evidence_pack": true,
+      "supports_signoff": false
     },
     "lifecycle": {
       "initial_state": "draft",
@@ -501,9 +747,25 @@
           "review",
           "publish",
           "archive"
-        ]
+        ],
+        "scope": "system",
+        "ownership": "platform"
       }
     ],
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
     "transaction_behavior": {
       "is_transactional": true,
       "transaction_kind": "ledger_entry",
@@ -544,7 +806,46 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     }
   },
@@ -559,7 +860,114 @@
         "workflow_state"
       ],
       "default_filters": [],
-      "quick_entry": false
+      "quick_entry": false,
+      "form_layout": {
+        "version": 1,
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "sections": [
+              {
+                "id": "identity",
+                "label": "Identity",
+                "columns": [
+                  {
+                    "id": "identity_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "title"
+                    ]
+                  },
+                  {
+                    "id": "identity_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "reference_no"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "dates",
+                "label": "Dates",
+                "columns": [
+                  {
+                    "id": "dates_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "posting_date"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "status",
+                "label": "Workflow",
+                "columns": [
+                  {
+                    "id": "status_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "workflow_state"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "details",
+            "label": "Details",
+            "sections": [
+              {
+                "id": "content",
+                "label": "Details",
+                "columns": [
+                  {
+                    "id": "content_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "report_code",
+                      "reporting_period",
+                      "risk_note"
+                    ]
+                  },
+                  {
+                    "id": "content_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "source_budget",
+                      "variance_summary",
+                      "review_state"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "content_details",
+                "label": "Description",
+                "columns": [
+                  {
+                    "id": "content_details_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "related_docs": [
       {
@@ -624,7 +1032,11 @@
       "show_activity_log": true,
       "show_comments": true,
       "show_assignments": true,
-      "show_related_docs": true
+      "show_related_docs": true,
+      "show_kpis": true,
+      "show_summaries": true,
+      "show_charts": true,
+      "show_reports": true
     },
     "integration": {
       "external_refs": [],
@@ -634,7 +1046,21 @@
       "doc_key": "variance_report",
       "supports_related_lookup": true,
       "supports_fetch_rules": true,
-      "action_side_effects_file": "side_effects.json"
+      "action_side_effects_file": "side_effects.json",
+      "supports_official_copy": true,
+      "supports_evidence_timeline": true,
+      "supports_chain_of_custody": false
+    },
+    "dashboard": {
+      "metric_blocks": [
+        "kpis",
+        "summaries",
+        "charts",
+        "reports",
+        "records"
+      ],
+      "default_view": "list",
+      "reporting_surface": "doc"
     }
   },
   "classification": {
@@ -684,12 +1110,76 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
     "report_boundary_classification": "source business doc",
-    "validation_status": "ready",
-    "validation_warnings": []
+    "validation_status": "warning",
+    "validation_warnings": [
+      "helper_relation_field:related_budget_plan",
+      "helper_relation_field:related_budget_line",
+      "helper_relation_field:related_budget_change_request"
+    ]
   },
   "business_logic": {
     "seeded": true,
@@ -734,6 +1224,12 @@
     "api_base_path": "/apis/decision_performance_management/budget_planning_control/variance_control/variance_report/",
     "status_field": "workflow_state",
     "initial_state": "draft",
+    "actions": [
+      "create",
+      "review",
+      "publish",
+      "archive"
+    ],
     "required_fields": [
       "title",
       "workflow_state",
@@ -764,7 +1260,79 @@
       "budget_line",
       "budget_change_request"
     ],
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_management": {
+      "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+      "legal_hold_enabled": false,
+      "disposition_action": "archive",
+      "immutable_after_submit": true,
+      "official_copy_on_submit": false,
+      "chain_of_custody_required": false,
+      "retention_trigger_field": null,
+      "legal_hold_field": null
+    },
+    "legal_hold_policy": {
+      "enabled": false,
+      "hold_field": null,
+      "restrict_disposition_while_active": true,
+      "allow_override_roles": []
+    },
+    "official_copy_policy": {
+      "enabled": true,
+      "format": "pdf",
+      "generate_on_submit": false,
+      "hash_outputs": false,
+      "include_audit_summary": true,
+      "include_attachments_index": true
+    },
+    "evidence_policy": {
+      "required_attachments": [],
+      "required_references": [],
+      "required_approvals": [],
+      "verification_fields": []
+    },
+    "chain_of_custody_policy": {
+      "enabled": false,
+      "custody_event_field": null,
+      "require_transfer_reason": false,
+      "require_actor_identity": true
+    },
     "downstream_effects": [],
+    "role_action_matrix": [
+      {
+        "role_id": "System Manager",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "review",
+          "publish",
+          "archive"
+        ],
+        "scope": "system",
+        "ownership": "platform"
+      }
+    ],
     "action_side_effects_file": "side_effects.json"
   },
   "runtime": {

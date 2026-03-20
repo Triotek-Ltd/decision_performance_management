@@ -4,5 +4,650 @@
   "app_id": "decision_performance_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Project Management KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "project_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Project Management summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "project_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Project Management charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "project_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "project_management_trend_line",
+            "label": "Project Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_management_volume_column",
+            "label": "Project Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_management_distribution_donut",
+            "label": "Project Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_status_report_trend_line",
+            "label": "Project Status Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_status_report_volume_column",
+            "label": "Project Status Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_status_report_distribution_donut",
+            "label": "Project Status Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_task_trend_line",
+            "label": "Project Task trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_task_volume_column",
+            "label": "Project Task volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_task_distribution_donut",
+            "label": "Project Task distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_plan_trend_line",
+            "label": "Project Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_plan_volume_column",
+            "label": "Project Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_plan_distribution_donut",
+            "label": "Project Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_record_trend_line",
+            "label": "Project Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_record_volume_column",
+            "label": "Project Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_record_distribution_donut",
+            "label": "Project Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Project Management reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "project_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "project_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "project_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "project_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "project_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Project Management Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Project Management Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Project Status Report Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Project Status Report Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "project_management_trend_line",
+        "label": "Project Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_management_volume_column",
+        "label": "Project Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_management_distribution_donut",
+        "label": "Project Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_status_report_trend_line",
+        "label": "Project Status Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_status_report_volume_column",
+        "label": "Project Status Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_status_report_distribution_donut",
+        "label": "Project Status Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_task_trend_line",
+        "label": "Project Task trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_task_volume_column",
+        "label": "Project Task volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_task_distribution_donut",
+        "label": "Project Task distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_plan_trend_line",
+        "label": "Project Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_plan_volume_column",
+        "label": "Project Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_plan_distribution_donut",
+        "label": "Project Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_record_trend_line",
+        "label": "Project Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_record_volume_column",
+        "label": "Project Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_record_distribution_donut",
+        "label": "Project Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "project_status_report",
+        "title": "Project Status Report",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "project_task",
+        "title": "Project Task",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "project_plan",
+        "title": "Project Plan",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "project_record",
+        "title": "Project Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "upstream_docs": [
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "downstream_docs": [
+      "project_record"
+    ],
+    "actors": [
+      "operations coordinator"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "project_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "project_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "project_record",
+          "kind": "doc"
+        },
+        {
+          "id": "project_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "project_task",
+          "kind": "doc"
+        },
+        {
+          "id": "project_status_report",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

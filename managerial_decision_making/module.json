@@ -4,5 +4,523 @@
   "app_id": "decision_performance_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Managerial Decision Making KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "managerial_decision_making",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Managerial Decision Making summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "managerial_decision_making",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Managerial Decision Making charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "managerial_decision_making",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "managerial_decision_making_trend_line",
+            "label": "Managerial Decision Making trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "managerial_decision_making_volume_column",
+            "label": "Managerial Decision Making volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "managerial_decision_making_distribution_donut",
+            "label": "Managerial Decision Making distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "decision_case_trend_line",
+            "label": "Decision Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "decision_case_volume_column",
+            "label": "Decision Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "decision_case_distribution_donut",
+            "label": "Decision Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "decision_option_trend_line",
+            "label": "Decision Option trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "decision_option_volume_column",
+            "label": "Decision Option volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "decision_option_distribution_donut",
+            "label": "Decision Option distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "risk_evaluation_record_trend_line",
+            "label": "Risk Evaluation Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "risk_evaluation_record_volume_column",
+            "label": "Risk Evaluation Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "risk_evaluation_record_distribution_donut",
+            "label": "Risk Evaluation Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Managerial Decision Making reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "managerial_decision_making",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "managerial_decision_making",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "managerial_decision_making",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "managerial_decision_making",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "managerial_decision_making",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Managerial Decision Making Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Managerial Decision Making Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Decision Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Decision Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "managerial_decision_making_trend_line",
+        "label": "Managerial Decision Making trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "managerial_decision_making_volume_column",
+        "label": "Managerial Decision Making volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "managerial_decision_making_distribution_donut",
+        "label": "Managerial Decision Making distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "decision_case_trend_line",
+        "label": "Decision Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "decision_case_volume_column",
+        "label": "Decision Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "decision_case_distribution_donut",
+        "label": "Decision Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "decision_option_trend_line",
+        "label": "Decision Option trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "decision_option_volume_column",
+        "label": "Decision Option volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "decision_option_distribution_donut",
+        "label": "Decision Option distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "risk_evaluation_record_trend_line",
+        "label": "Risk Evaluation Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "risk_evaluation_record_volume_column",
+        "label": "Risk Evaluation Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "risk_evaluation_record_distribution_donut",
+        "label": "Risk Evaluation Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "decision_case",
+        "title": "Decision Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "decision_option",
+        "title": "Decision Option",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "risk_evaluation_record",
+        "title": "Risk Evaluation Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "performance_exception"
+    ],
+    "upstream_docs": [
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "performance_exception"
+    ],
+    "downstream_docs": [
+      "risk_evaluation_record"
+    ],
+    "actors": [
+      "case owner"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "risk_evaluation_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "performance_exception"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "decision_case",
+        "target_doc": "decision_option",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_case",
+        "target_doc": "risk_evaluation_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_case",
+        "target_doc": "risk_evaluation_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "decision_option",
+        "target_doc": "decision_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_option",
+        "target_doc": "risk_evaluation_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "decision_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "decision_option",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "decision_option",
+          "kind": "doc"
+        },
+        {
+          "id": "risk_evaluation_record",
+          "kind": "doc"
+        },
+        {
+          "id": "decision_case",
+          "kind": "doc"
+        },
+        {
+          "id": "performance_exception",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "decision_case",
+          "target_doc": "decision_option",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_case",
+          "target_doc": "risk_evaluation_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_case",
+          "target_doc": "risk_evaluation_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "decision_option",
+          "target_doc": "decision_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_option",
+          "target_doc": "risk_evaluation_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "decision_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "decision_option",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

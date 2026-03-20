@@ -4,5 +4,540 @@
   "app_id": "decision_performance_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Performance Measurement KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "performance_measurement",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Performance Measurement summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "performance_measurement",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Performance Measurement charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "performance_measurement",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "performance_measurement_trend_line",
+            "label": "Performance Measurement trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "performance_measurement_volume_column",
+            "label": "Performance Measurement volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "performance_measurement_distribution_donut",
+            "label": "Performance Measurement distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "kpi_definition_trend_line",
+            "label": "Kpi Definition trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "kpi_definition_volume_column",
+            "label": "Kpi Definition volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "kpi_definition_distribution_donut",
+            "label": "Kpi Definition distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "performance_exception_trend_line",
+            "label": "Performance Exception trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "performance_exception_volume_column",
+            "label": "Performance Exception volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "performance_exception_distribution_donut",
+            "label": "Performance Exception distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "scorecard_record_trend_line",
+            "label": "Scorecard Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "scorecard_record_volume_column",
+            "label": "Scorecard Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "scorecard_record_distribution_donut",
+            "label": "Scorecard Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Performance Measurement reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "performance_measurement",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "performance_measurement",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "performance_measurement",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "performance_measurement",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "performance_measurement",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Performance Measurement Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Performance Measurement Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Kpi Definition Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Kpi Definition Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "performance_measurement_trend_line",
+        "label": "Performance Measurement trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "performance_measurement_volume_column",
+        "label": "Performance Measurement volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "performance_measurement_distribution_donut",
+        "label": "Performance Measurement distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "kpi_definition_trend_line",
+        "label": "Kpi Definition trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "kpi_definition_volume_column",
+        "label": "Kpi Definition volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "kpi_definition_distribution_donut",
+        "label": "Kpi Definition distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "performance_exception_trend_line",
+        "label": "Performance Exception trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "performance_exception_volume_column",
+        "label": "Performance Exception volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "performance_exception_distribution_donut",
+        "label": "Performance Exception distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "scorecard_record_trend_line",
+        "label": "Scorecard Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "scorecard_record_volume_column",
+        "label": "Scorecard Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "scorecard_record_distribution_donut",
+        "label": "Scorecard Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "kpi_definition",
+        "title": "Kpi Definition",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "performance_exception",
+        "title": "Performance Exception",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "scorecard_record",
+        "title": "Scorecard Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "scorecard_record",
+      "performance_exception",
+      "alert_rule",
+      "kpi_definition",
+      "management_action_item"
+    ],
+    "upstream_docs": [
+      "scorecard_record",
+      "performance_exception",
+      "alert_rule",
+      "kpi_definition",
+      "management_action_item"
+    ],
+    "downstream_docs": [
+      "scorecard_record"
+    ],
+    "actors": [
+      "hr officer"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "scorecard_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "scorecard_record",
+      "performance_exception",
+      "alert_rule",
+      "kpi_definition",
+      "management_action_item"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "scorecard_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "alert_rule",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "scorecard_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "kpi_definition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "scorecard_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "management_action_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "scorecard_record",
+        "target_doc": "kpi_definition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "scorecard_record",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "scorecard_record",
+          "kind": "doc"
+        },
+        {
+          "id": "performance_exception",
+          "kind": "doc"
+        },
+        {
+          "id": "alert_rule",
+          "kind": "doc"
+        },
+        {
+          "id": "kpi_definition",
+          "kind": "doc"
+        },
+        {
+          "id": "management_action_item",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "scorecard_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "alert_rule",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "scorecard_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "kpi_definition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "scorecard_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "management_action_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "scorecard_record",
+          "target_doc": "kpi_definition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "scorecard_record",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

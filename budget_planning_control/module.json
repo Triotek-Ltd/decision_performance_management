@@ -4,5 +4,629 @@
   "app_id": "decision_performance_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Budget Planning Control KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "budget_planning_control",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Budget Planning Control summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "budget_planning_control",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Budget Planning Control charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "budget_planning_control",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "budget_planning_control_trend_line",
+            "label": "Budget Planning Control trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_planning_control_volume_column",
+            "label": "Budget Planning Control volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_planning_control_distribution_donut",
+            "label": "Budget Planning Control distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_line_trend_line",
+            "label": "Budget Line trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_line_volume_column",
+            "label": "Budget Line volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_line_distribution_donut",
+            "label": "Budget Line distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_plan_trend_line",
+            "label": "Budget Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_plan_volume_column",
+            "label": "Budget Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_plan_distribution_donut",
+            "label": "Budget Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_change_request_trend_line",
+            "label": "Budget Change Request trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_change_request_volume_column",
+            "label": "Budget Change Request volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_change_request_distribution_donut",
+            "label": "Budget Change Request distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "variance_report_trend_line",
+            "label": "Variance Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "variance_report_volume_column",
+            "label": "Variance Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "variance_report_distribution_donut",
+            "label": "Variance Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Budget Planning Control reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "budget_planning_control",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "budget_planning_control",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "budget_planning_control",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "budget_planning_control",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "budget_planning_control",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Budget Planning Control Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Budget Planning Control Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Budget Line Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Budget Line Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "budget_planning_control_trend_line",
+        "label": "Budget Planning Control trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_planning_control_volume_column",
+        "label": "Budget Planning Control volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_planning_control_distribution_donut",
+        "label": "Budget Planning Control distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_line_trend_line",
+        "label": "Budget Line trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_line_volume_column",
+        "label": "Budget Line volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_line_distribution_donut",
+        "label": "Budget Line distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_plan_trend_line",
+        "label": "Budget Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_plan_volume_column",
+        "label": "Budget Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_plan_distribution_donut",
+        "label": "Budget Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_change_request_trend_line",
+        "label": "Budget Change Request trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_change_request_volume_column",
+        "label": "Budget Change Request volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_change_request_distribution_donut",
+        "label": "Budget Change Request distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "variance_report_trend_line",
+        "label": "Variance Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "variance_report_volume_column",
+        "label": "Variance Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "variance_report_distribution_donut",
+        "label": "Variance Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "budget_line",
+        "title": "Budget Line",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "budget_plan",
+        "title": "Budget Plan",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "budget_change_request",
+        "title": "Budget Change Request",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "variance_report",
+        "title": "Variance Report",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "upstream_docs": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "downstream_docs": [
+      "budget_change_request",
+      "budget_plan"
+    ],
+    "actors": [],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "budget_change_request",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "budget_plan",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "budget_line",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_line",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_change_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_change_request",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "budget_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_change_request",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "budget_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "variance_report",
+          "kind": "doc"
+        },
+        {
+          "id": "budget_line",
+          "kind": "doc"
+        },
+        {
+          "id": "budget_change_request",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "budget_line",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_line",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_change_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_change_request",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "budget_plan",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_change_request",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

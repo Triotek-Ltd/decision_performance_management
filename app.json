@@ -8,5 +8,2162 @@
     "id": "CUSTOM-PROPRIETARY",
     "type": "proprietary_custom",
     "terms_ref": "LICENSE"
+  },
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "app",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "modules",
+      "flatten_submodules_in_ui": false
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "My Plug App KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "decision_performance_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "My Plug App summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "decision_performance_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "My Plug App charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "decision_performance_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "decision_performance_management_trend_line",
+            "label": "My Plug App trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "decision_performance_management_volume_column",
+            "label": "My Plug App volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "decision_performance_management_distribution_donut",
+            "label": "My Plug App distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_planning_control_trend_line",
+            "label": "Budget Planning Control trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_planning_control_volume_column",
+            "label": "Budget Planning Control volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_planning_control_distribution_donut",
+            "label": "Budget Planning Control distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_line_trend_line",
+            "label": "Budget Line trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_line_volume_column",
+            "label": "Budget Line volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_line_distribution_donut",
+            "label": "Budget Line distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_plan_trend_line",
+            "label": "Budget Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_plan_volume_column",
+            "label": "Budget Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_plan_distribution_donut",
+            "label": "Budget Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "budget_change_request_trend_line",
+            "label": "Budget Change Request trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "budget_change_request_volume_column",
+            "label": "Budget Change Request volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "budget_change_request_distribution_donut",
+            "label": "Budget Change Request distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "variance_report_trend_line",
+            "label": "Variance Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "variance_report_volume_column",
+            "label": "Variance Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "variance_report_distribution_donut",
+            "label": "Variance Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "management_reporting_trend_line",
+            "label": "Management Reporting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "management_reporting_volume_column",
+            "label": "Management Reporting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "management_reporting_distribution_donut",
+            "label": "Management Reporting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "management_report_trend_line",
+            "label": "Management Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "management_report_volume_column",
+            "label": "Management Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "management_report_distribution_donut",
+            "label": "Management Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "executive_review_trend_line",
+            "label": "Executive Review trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "executive_review_volume_column",
+            "label": "Executive Review volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "executive_review_distribution_donut",
+            "label": "Executive Review distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "management_action_item_trend_line",
+            "label": "Management Action Item trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "management_action_item_volume_column",
+            "label": "Management Action Item volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "management_action_item_distribution_donut",
+            "label": "Management Action Item distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "managerial_decision_making_trend_line",
+            "label": "Managerial Decision Making trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "managerial_decision_making_volume_column",
+            "label": "Managerial Decision Making volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "managerial_decision_making_distribution_donut",
+            "label": "Managerial Decision Making distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "decision_case_trend_line",
+            "label": "Decision Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "decision_case_volume_column",
+            "label": "Decision Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "decision_case_distribution_donut",
+            "label": "Decision Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "decision_option_trend_line",
+            "label": "Decision Option trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "decision_option_volume_column",
+            "label": "Decision Option volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "decision_option_distribution_donut",
+            "label": "Decision Option distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "risk_evaluation_record_trend_line",
+            "label": "Risk Evaluation Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "risk_evaluation_record_volume_column",
+            "label": "Risk Evaluation Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "risk_evaluation_record_distribution_donut",
+            "label": "Risk Evaluation Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "performance_measurement_trend_line",
+            "label": "Performance Measurement trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "performance_measurement_volume_column",
+            "label": "Performance Measurement volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "performance_measurement_distribution_donut",
+            "label": "Performance Measurement distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "kpi_definition_trend_line",
+            "label": "Kpi Definition trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "kpi_definition_volume_column",
+            "label": "Kpi Definition volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "kpi_definition_distribution_donut",
+            "label": "Kpi Definition distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "performance_exception_trend_line",
+            "label": "Performance Exception trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "performance_exception_volume_column",
+            "label": "Performance Exception volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "performance_exception_distribution_donut",
+            "label": "Performance Exception distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "scorecard_record_trend_line",
+            "label": "Scorecard Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "scorecard_record_volume_column",
+            "label": "Scorecard Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "scorecard_record_distribution_donut",
+            "label": "Scorecard Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_management_trend_line",
+            "label": "Project Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_management_volume_column",
+            "label": "Project Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_management_distribution_donut",
+            "label": "Project Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_status_report_trend_line",
+            "label": "Project Status Report trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_status_report_volume_column",
+            "label": "Project Status Report volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_status_report_distribution_donut",
+            "label": "Project Status Report distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_task_trend_line",
+            "label": "Project Task trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_task_volume_column",
+            "label": "Project Task volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_task_distribution_donut",
+            "label": "Project Task distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_plan_trend_line",
+            "label": "Project Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_plan_volume_column",
+            "label": "Project Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_plan_distribution_donut",
+            "label": "Project Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "project_record_trend_line",
+            "label": "Project Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "project_record_volume_column",
+            "label": "Project Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "project_record_distribution_donut",
+            "label": "Project Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "My Plug App reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "decision_performance_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "decision_performance_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "decision_performance_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "decision_performance_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "decision_performance_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "My Plug App Overview",
+        "report_type": "dashboard_summary",
+        "surface": "app"
+      },
+      {
+        "id": "trend_report",
+        "label": "My Plug App Trends",
+        "report_type": "trend_analysis",
+        "surface": "app"
+      },
+      {
+        "id": "summary_report",
+        "label": "Budget Line Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Budget Line Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "decision_performance_management_trend_line",
+        "label": "My Plug App trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "decision_performance_management_volume_column",
+        "label": "My Plug App volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "decision_performance_management_distribution_donut",
+        "label": "My Plug App distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_planning_control_trend_line",
+        "label": "Budget Planning Control trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_planning_control_volume_column",
+        "label": "Budget Planning Control volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_planning_control_distribution_donut",
+        "label": "Budget Planning Control distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_line_trend_line",
+        "label": "Budget Line trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_line_volume_column",
+        "label": "Budget Line volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_line_distribution_donut",
+        "label": "Budget Line distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_plan_trend_line",
+        "label": "Budget Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_plan_volume_column",
+        "label": "Budget Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_plan_distribution_donut",
+        "label": "Budget Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "budget_change_request_trend_line",
+        "label": "Budget Change Request trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "budget_change_request_volume_column",
+        "label": "Budget Change Request volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "budget_change_request_distribution_donut",
+        "label": "Budget Change Request distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "variance_report_trend_line",
+        "label": "Variance Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "variance_report_volume_column",
+        "label": "Variance Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "variance_report_distribution_donut",
+        "label": "Variance Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "management_reporting_trend_line",
+        "label": "Management Reporting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "management_reporting_volume_column",
+        "label": "Management Reporting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "management_reporting_distribution_donut",
+        "label": "Management Reporting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "management_report_trend_line",
+        "label": "Management Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "management_report_volume_column",
+        "label": "Management Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "management_report_distribution_donut",
+        "label": "Management Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "executive_review_trend_line",
+        "label": "Executive Review trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "executive_review_volume_column",
+        "label": "Executive Review volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "executive_review_distribution_donut",
+        "label": "Executive Review distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "management_action_item_trend_line",
+        "label": "Management Action Item trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "management_action_item_volume_column",
+        "label": "Management Action Item volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "management_action_item_distribution_donut",
+        "label": "Management Action Item distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "managerial_decision_making_trend_line",
+        "label": "Managerial Decision Making trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "managerial_decision_making_volume_column",
+        "label": "Managerial Decision Making volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "managerial_decision_making_distribution_donut",
+        "label": "Managerial Decision Making distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "decision_case_trend_line",
+        "label": "Decision Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "decision_case_volume_column",
+        "label": "Decision Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "decision_case_distribution_donut",
+        "label": "Decision Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "decision_option_trend_line",
+        "label": "Decision Option trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "decision_option_volume_column",
+        "label": "Decision Option volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "decision_option_distribution_donut",
+        "label": "Decision Option distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "risk_evaluation_record_trend_line",
+        "label": "Risk Evaluation Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "risk_evaluation_record_volume_column",
+        "label": "Risk Evaluation Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "risk_evaluation_record_distribution_donut",
+        "label": "Risk Evaluation Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "performance_measurement_trend_line",
+        "label": "Performance Measurement trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "performance_measurement_volume_column",
+        "label": "Performance Measurement volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "performance_measurement_distribution_donut",
+        "label": "Performance Measurement distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "kpi_definition_trend_line",
+        "label": "Kpi Definition trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "kpi_definition_volume_column",
+        "label": "Kpi Definition volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "kpi_definition_distribution_donut",
+        "label": "Kpi Definition distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "performance_exception_trend_line",
+        "label": "Performance Exception trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "performance_exception_volume_column",
+        "label": "Performance Exception volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "performance_exception_distribution_donut",
+        "label": "Performance Exception distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "scorecard_record_trend_line",
+        "label": "Scorecard Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "scorecard_record_volume_column",
+        "label": "Scorecard Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "scorecard_record_distribution_donut",
+        "label": "Scorecard Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_management_trend_line",
+        "label": "Project Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_management_volume_column",
+        "label": "Project Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_management_distribution_donut",
+        "label": "Project Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_status_report_trend_line",
+        "label": "Project Status Report trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_status_report_volume_column",
+        "label": "Project Status Report volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_status_report_distribution_donut",
+        "label": "Project Status Report distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_task_trend_line",
+        "label": "Project Task trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_task_volume_column",
+        "label": "Project Task volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_task_distribution_donut",
+        "label": "Project Task distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_plan_trend_line",
+        "label": "Project Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_plan_volume_column",
+        "label": "Project Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_plan_distribution_donut",
+        "label": "Project Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "project_record_trend_line",
+        "label": "Project Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "project_record_volume_column",
+        "label": "Project Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "project_record_distribution_donut",
+        "label": "Project Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "budget_planning_control",
+        "title": "Budget Planning Control",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "management_reporting",
+        "title": "Management Reporting",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "managerial_decision_making",
+        "title": "Managerial Decision Making",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "performance_measurement",
+        "title": "Performance Measurement",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "project_management",
+        "title": "Project Management",
+        "surface": "module",
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request",
+      "executive_review",
+      "management_action_item",
+      "management_report",
+      "team_checkin",
+      "performance_exception",
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "scorecard_record",
+      "alert_rule",
+      "kpi_definition",
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "upstream_docs": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request",
+      "executive_review",
+      "management_action_item",
+      "management_report",
+      "team_checkin",
+      "performance_exception",
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "scorecard_record",
+      "alert_rule",
+      "kpi_definition",
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "downstream_docs": [
+      "budget_change_request",
+      "budget_plan",
+      "risk_evaluation_record",
+      "scorecard_record",
+      "project_record"
+    ],
+    "actors": [
+      "Reviewer",
+      "case owner",
+      "hr officer",
+      "operations coordinator"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "budget_change_request",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "budget_plan",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "risk_evaluation_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "scorecard_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "project_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "project_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "budget_plan",
+      "variance_report",
+      "budget_line",
+      "budget_change_request",
+      "executive_review",
+      "management_action_item",
+      "management_report",
+      "team_checkin",
+      "performance_exception",
+      "decision_option",
+      "risk_evaluation_record",
+      "decision_case",
+      "scorecard_record",
+      "alert_rule",
+      "kpi_definition",
+      "project_record",
+      "project_plan",
+      "project_task",
+      "project_status_report"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "budget_line",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_line",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_change_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_plan",
+        "target_doc": "budget_change_request",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "variance_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "budget_change_request",
+        "target_doc": "budget_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "variance_report",
+        "target_doc": "budget_change_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_report",
+        "target_doc": "executive_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_report",
+        "target_doc": "management_action_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "executive_review",
+        "target_doc": "management_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "executive_review",
+        "target_doc": "management_action_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_action_item",
+        "target_doc": "management_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_action_item",
+        "target_doc": "executive_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_action_item",
+        "target_doc": "team_checkin",
+        "relation": "references"
+      },
+      {
+        "source_doc": "management_action_item",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_case",
+        "target_doc": "decision_option",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_case",
+        "target_doc": "risk_evaluation_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_case",
+        "target_doc": "risk_evaluation_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "decision_option",
+        "target_doc": "decision_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "decision_option",
+        "target_doc": "risk_evaluation_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "decision_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "decision_option",
+        "relation": "references"
+      },
+      {
+        "source_doc": "risk_evaluation_record",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "scorecard_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "alert_rule",
+        "relation": "references"
+      },
+      {
+        "source_doc": "kpi_definition",
+        "target_doc": "scorecard_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "kpi_definition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "scorecard_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "management_action_item",
+        "relation": "references"
+      },
+      {
+        "source_doc": "scorecard_record",
+        "target_doc": "kpi_definition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "scorecard_record",
+        "target_doc": "performance_exception",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_status_report",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_task",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "project_plan",
+        "target_doc": "project_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_task",
+        "relation": "references"
+      },
+      {
+        "source_doc": "project_record",
+        "target_doc": "project_status_report",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "budget_planning_control",
+          "kind": "module",
+          "title": "Budget Planning Control"
+        },
+        {
+          "id": "management_reporting",
+          "kind": "module",
+          "title": "Management Reporting"
+        },
+        {
+          "id": "managerial_decision_making",
+          "kind": "module",
+          "title": "Managerial Decision Making"
+        },
+        {
+          "id": "performance_measurement",
+          "kind": "module",
+          "title": "Performance Measurement"
+        },
+        {
+          "id": "project_management",
+          "kind": "module",
+          "title": "Project Management"
+        },
+        {
+          "id": "budget_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "variance_report",
+          "kind": "doc"
+        },
+        {
+          "id": "budget_line",
+          "kind": "doc"
+        },
+        {
+          "id": "budget_change_request",
+          "kind": "doc"
+        },
+        {
+          "id": "executive_review",
+          "kind": "doc"
+        },
+        {
+          "id": "management_action_item",
+          "kind": "doc"
+        },
+        {
+          "id": "management_report",
+          "kind": "doc"
+        },
+        {
+          "id": "team_checkin",
+          "kind": "doc"
+        },
+        {
+          "id": "performance_exception",
+          "kind": "doc"
+        },
+        {
+          "id": "decision_option",
+          "kind": "doc"
+        },
+        {
+          "id": "risk_evaluation_record",
+          "kind": "doc"
+        },
+        {
+          "id": "decision_case",
+          "kind": "doc"
+        },
+        {
+          "id": "scorecard_record",
+          "kind": "doc"
+        },
+        {
+          "id": "alert_rule",
+          "kind": "doc"
+        },
+        {
+          "id": "kpi_definition",
+          "kind": "doc"
+        },
+        {
+          "id": "project_record",
+          "kind": "doc"
+        },
+        {
+          "id": "project_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "project_task",
+          "kind": "doc"
+        },
+        {
+          "id": "project_status_report",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "budget_line",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_line",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_change_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_plan",
+          "target_doc": "budget_change_request",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "variance_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "budget_change_request",
+          "target_doc": "budget_plan",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "variance_report",
+          "target_doc": "budget_change_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_report",
+          "target_doc": "executive_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_report",
+          "target_doc": "management_action_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "executive_review",
+          "target_doc": "management_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "executive_review",
+          "target_doc": "management_action_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_action_item",
+          "target_doc": "management_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_action_item",
+          "target_doc": "executive_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_action_item",
+          "target_doc": "team_checkin",
+          "relation": "references"
+        },
+        {
+          "source_doc": "management_action_item",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_case",
+          "target_doc": "decision_option",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_case",
+          "target_doc": "risk_evaluation_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_case",
+          "target_doc": "risk_evaluation_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "decision_option",
+          "target_doc": "decision_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "decision_option",
+          "target_doc": "risk_evaluation_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "decision_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "decision_option",
+          "relation": "references"
+        },
+        {
+          "source_doc": "risk_evaluation_record",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "scorecard_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "alert_rule",
+          "relation": "references"
+        },
+        {
+          "source_doc": "kpi_definition",
+          "target_doc": "scorecard_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "kpi_definition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "scorecard_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "performance_exception",
+          "target_doc": "management_action_item",
+          "relation": "references"
+        },
+        {
+          "source_doc": "scorecard_record",
+          "target_doc": "kpi_definition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "scorecard_record",
+          "target_doc": "performance_exception",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_status_report",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_task",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "project_plan",
+          "target_doc": "project_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_task",
+          "relation": "references"
+        },
+        {
+          "source_doc": "project_record",
+          "target_doc": "project_status_report",
+          "relation": "references"
+        }
+      ]
+    }
   }
 }

@@ -15,6 +15,246 @@
   },
   "doc_key": "performance_exception",
   "doc_title": "Performance Exception",
+  "ui": {
+    "icon_key": "checklist",
+    "accent": "#2d6a4f",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Performance Exception KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "performance_exception",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Performance Exception summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "performance_exception",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Performance Exception charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "performance_exception",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Performance Exception reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "performance_exception",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Performance Exception records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "performance_exception",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "performance_exception",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "performance_exception",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "performance_exception",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "performance_exception",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Performance Exception Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Performance Exception Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Performance Exception Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Performance Exception Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "performance_exception_trend_line",
+        "label": "Performance Exception trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "performance_exception_volume_column",
+        "label": "Performance Exception volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "performance_exception_distribution_donut",
+        "label": "Performance Exception distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "kpi_definition",
+      "scorecard_record",
+      "management_action_item",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "kpi_definition",
+      "scorecard_record",
+      "management_action_item"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "threshold",
+      "metric context from kpi_definition"
+    ],
+    "emits_records": [],
+    "downstream_effects": [],
+    "actors": [
+      "hr officer"
+    ],
+    "handoff_targets": [
+      "kpi_definition",
+      "scorecard_record",
+      "management_action_item"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "kpi_definition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "scorecard_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "performance_exception",
+        "target_doc": "management_action_item",
+        "relation": "references"
+      }
+    ]
+  },
   "allowed_actions": [
     "create",
     "assign",
@@ -289,14 +529,14 @@
       {
         "field_id": "owner",
         "label": "Owner",
-        "type": "Data",
+        "type": "Link",
         "required": false,
         "read_only": false,
         "default": null,
         "unique": false,
         "options": null,
         "purpose": "actor_reference",
-        "linked_doc": null,
+        "linked_doc": "employee_record",
         "depends_on": null,
         "mandatory_depends_on": null,
         "read_only_depends_on": null,
@@ -356,7 +596,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_scorecard_record",
@@ -380,7 +621,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_management_action_item",
@@ -404,7 +646,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       }
     ],
     "title_field": "title",
@@ -433,7 +676,12 @@
       "supports_attachments": true,
       "supports_comments": true,
       "supports_activity_log": true,
-      "supports_assignments": true
+      "supports_assignments": true,
+      "is_submittable": false,
+      "supports_submission_snapshot": true,
+      "supports_official_outputs": true,
+      "supports_evidence_pack": true,
+      "supports_signoff": false
     },
     "lifecycle": {
       "initial_state": "raised",
@@ -528,7 +776,9 @@
           "escalate",
           "close",
           "archive"
-        ]
+        ],
+        "scope": "system",
+        "ownership": "platform"
       },
       {
         "role_id": "hr officer",
@@ -536,13 +786,30 @@
           "view",
           "list",
           "create",
+          "update",
           "assign",
           "review",
           "close",
           "archive"
-        ]
+        ],
+        "scope": "document",
+        "ownership": "functional"
       }
     ],
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
     "transaction_behavior": {
       "is_transactional": false,
       "transaction_kind": null,
@@ -583,7 +850,46 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     }
   },
@@ -598,7 +904,100 @@
         "modified"
       ],
       "default_filters": [],
-      "quick_entry": false
+      "quick_entry": false,
+      "form_layout": {
+        "version": 1,
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "sections": [
+              {
+                "id": "identity",
+                "label": "Identity",
+                "columns": [
+                  {
+                    "id": "identity_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "title"
+                    ]
+                  },
+                  {
+                    "id": "identity_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "reference_no"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "status",
+                "label": "Workflow",
+                "columns": [
+                  {
+                    "id": "status_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "workflow_state"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "details",
+            "label": "Details",
+            "sections": [
+              {
+                "id": "content",
+                "label": "Details",
+                "columns": [
+                  {
+                    "id": "content_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "exception_code",
+                      "exception_summary",
+                      "owner"
+                    ]
+                  },
+                  {
+                    "id": "content_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "source_kpi_or_scorecard",
+                      "severity",
+                      "disposition"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "content_details",
+                "label": "Description",
+                "columns": [
+                  {
+                    "id": "content_details_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "related_docs": [
       {
@@ -663,7 +1062,11 @@
       "show_activity_log": true,
       "show_comments": true,
       "show_assignments": true,
-      "show_related_docs": true
+      "show_related_docs": true,
+      "show_kpis": true,
+      "show_summaries": true,
+      "show_charts": true,
+      "show_reports": true
     },
     "integration": {
       "external_refs": [],
@@ -709,7 +1112,21 @@
           ]
         }
       },
-      "action_side_effects_file": "side_effects.json"
+      "action_side_effects_file": "side_effects.json",
+      "supports_official_copy": true,
+      "supports_evidence_timeline": true,
+      "supports_chain_of_custody": false
+    },
+    "dashboard": {
+      "metric_blocks": [
+        "kpis",
+        "summaries",
+        "charts",
+        "reports",
+        "records"
+      ],
+      "default_view": "list",
+      "reporting_surface": "doc"
     }
   },
   "classification": {
@@ -759,12 +1176,76 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
     "report_boundary_classification": "workflow/support doc",
-    "validation_status": "ready",
-    "validation_warnings": []
+    "validation_status": "warning",
+    "validation_warnings": [
+      "helper_relation_field:related_kpi_definition",
+      "helper_relation_field:related_scorecard_record",
+      "helper_relation_field:related_management_action_item"
+    ]
   },
   "business_logic": {
     "seeded": true,
@@ -812,6 +1293,15 @@
     "api_base_path": "/apis/decision_performance_management/performance_measurement/scorecards/performance_exception/",
     "status_field": "workflow_state",
     "initial_state": "raised",
+    "actions": [
+      "create",
+      "assign",
+      "review",
+      "correct",
+      "escalate",
+      "close",
+      "archive"
+    ],
     "required_fields": [
       "title",
       "workflow_state"
@@ -847,7 +1337,97 @@
       "scorecard_record",
       "management_action_item"
     ],
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_management": {
+      "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+      "legal_hold_enabled": false,
+      "disposition_action": "archive",
+      "immutable_after_submit": true,
+      "official_copy_on_submit": false,
+      "chain_of_custody_required": false,
+      "retention_trigger_field": null,
+      "legal_hold_field": null
+    },
+    "legal_hold_policy": {
+      "enabled": false,
+      "hold_field": null,
+      "restrict_disposition_while_active": true,
+      "allow_override_roles": []
+    },
+    "official_copy_policy": {
+      "enabled": true,
+      "format": "pdf",
+      "generate_on_submit": false,
+      "hash_outputs": false,
+      "include_audit_summary": true,
+      "include_attachments_index": true
+    },
+    "evidence_policy": {
+      "required_attachments": [],
+      "required_references": [],
+      "required_approvals": [],
+      "verification_fields": []
+    },
+    "chain_of_custody_policy": {
+      "enabled": false,
+      "custody_event_field": null,
+      "require_transfer_reason": false,
+      "require_actor_identity": true
+    },
     "downstream_effects": [],
+    "role_action_matrix": [
+      {
+        "role_id": "System Manager",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "assign",
+          "review",
+          "correct",
+          "escalate",
+          "close",
+          "archive"
+        ],
+        "scope": "system",
+        "ownership": "platform"
+      },
+      {
+        "role_id": "hr officer",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "update",
+          "assign",
+          "review",
+          "close",
+          "archive"
+        ],
+        "scope": "document",
+        "ownership": "functional"
+      }
+    ],
     "action_side_effects_file": "side_effects.json"
   },
   "runtime": {
